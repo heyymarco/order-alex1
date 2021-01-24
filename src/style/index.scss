@@ -1,0 +1,81 @@
+// load basic color definitions:
+@use "~@nodestrap/colors/src/index" as color with (
+    $primary: #8893FF
+);
+
+// define typography (texting) settings:
+$font-family: "Montserrat";
+@use "~@nodestrap/typography/src/index" as typo with (
+    $color: var(#{color.$cssvar}light),
+    $backg: #4651B8,
+
+    $font-family-sans-serif: $font-family,
+    $font-weight-bold: 600,
+
+    $disp-font-weight: 700
+);
+
+// define responsive breakpoints:
+@use "~@nodestrap/breakpoints/src/index" as breakpoint with (
+    $breakpoints: (
+        mobile  : 0px,      // 0px    - 1023px   => mobile design
+        tablet  : 1024px,   // 1024px - 1439px   => tablet design
+        desktop : 1440px    // 1440px - infinity => desktop design
+    )
+);
+
+// load responsive container:
+@use "container/index" as container with (
+    $padding-xs: (
+        mobile  : 20px,
+        tablet  : 40px,
+        desktop : 117px
+    ),
+
+    $padding-ys: (
+        mobile  : 40px,
+        tablet  : 40px,
+        desktop : 95px
+    )
+);
+
+// load button:
+@use "~@nodestrap/button/src/index" as button with (
+    $font-weight: var(#{typo.$cssvar}font-weight-bold)
+);
+
+// load navbar:
+@use "navbar/index" as navbar;
+
+
+@use "./section-hero" as section-hero;
+
+
+
+
+:root {
+    // overwrite defaults:
+    #{button.$cssvar}color-primary: var(#{color.$cssvar}white);
+
+    // responsive navbar height:
+    #{navbar.$cssvar}height: 65px;
+    @include breakpoint.media-up(tablet) {
+        #{navbar.$cssvar}height: 80px;
+    }
+}
+
+
+// load custom font:
+@font-face {
+    font-family: $font-family;
+    font-weight: normal;
+    src: url("Montserrat-Regular.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box !important;
+}
+body {
+    margin: 0;
+    padding: 0;
+}

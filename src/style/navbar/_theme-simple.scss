@@ -1,0 +1,108 @@
+// A theme with simple look & simple animations.
+
+
+
+@forward "theme-menu-slide"         hide
+                                    toggler-expand, toggler-collapse, // will be overriden by toggler-transform
+                                    logo, toggler, link, // will be overriden by hover-bg
+                                    default, logo, menu, link // will be overriden on this module
+                                    ;
+@use "theme-menu-slide" as menu-slide;
+
+
+@forward "theme-toggler-transf"     hide
+                                    menu-expand, menu-collapse, // will be overriden by menu-slide
+                                    logo, toggler, link, // will be overriden by hover-bg
+                                    default, logo, menu, link // will be overriden on this module
+                                    ;
+@use "theme-toggler-transf" as toggler-transform;
+
+
+@forward "theme-hover-bg"           hide
+                                    toggler-expand, toggler-collapse, // will be overriden by theme-toggler-transform
+                                    menu-expand, menu-collapse, // will be overriden by menu-slide
+                                    default, logo, menu, link // will be overriden on this module
+                                    ;
+@use "theme-hover-bg" as hover-bg;
+
+
+
+@use "~@nodestrap/colors/src/index"      as col;
+@use "~@nodestrap/spacer/src/index"      as spc;
+@use "../container/index"                as cont;
+@use "~@nodestrap/typography/src/index"  as typo;
+@use "~@nodestrap/breakpoints/src/index" as breakpoint;
+@use "~@nodestrap/button/src/index"      as button;
+
+
+
+/// a default theme definition.
+@mixin default {
+    background      : var(#{typo.$cssvar}backg);
+    color           : var(#{col.$cssvar}light);
+
+    column-gap      : var(#{spc.$cssvar}sm);
+    row-gap         : 0;
+
+    padding-left    : var(#{cont.$cssvar}padding-x);
+    padding-right   : var(#{cont.$cssvar}padding-x);
+    padding-top     : var(#{spc.$cssvar}sm);
+    padding-bottom  : var(#{spc.$cssvar}sm);
+
+    
+    --navbar-font-size: 16px;
+    @include breakpoint.media-up(desktop) {
+        --navbar-font-size: 18px;
+    }
+    --navbar-font-weight: var(#{typo.$cssvar}font-weight-bold);
+
+    font-size: var(--navbar-font-size);
+    font-weight: var(--navbar-font-weight);
+    #{button.$cssvar}font-size:  var(--navbar-font-size);
+    #{button.$cssvar}font-weight: var(--navbar-font-weight);
+    > .menu > button:first-of-type {
+        @include breakpoint.media-up(tablet) {
+            margin-left: 35px;
+        }
+        @include breakpoint.media-up(desktop) {
+            margin-left: 95px;
+        }
+    }
+}
+
+/// an theme definition on phone when expanded.
+@mixin phone-expand {
+    row-gap         : var(#{spc.$cssvar}sm);
+}
+
+
+/// an theme definition for the navbar's toggler.
+@mixin logo {
+    @include hover-bg.logo;
+
+
+    --navbar-logo-width: 177px;
+    @include breakpoint.media-up(tablet) {
+        --navbar-logo-width: 188px;
+    }
+    @include breakpoint.media-up(desktop) {
+        --navbar-logo-width: 246px;
+    }
+    width: var(--navbar-logo-width);
+    height: min-content;
+    > img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@mixin menu {
+    align-items: center;
+}
+
+/// an theme definition for the navbar's link.
+@mixin link {
+    @include hover-bg.link;
+
+    white-space: nowrap;
+}

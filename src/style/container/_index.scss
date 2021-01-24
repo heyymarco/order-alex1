@@ -1,0 +1,32 @@
+@use "~@nodestrap/breakpoints/src/index" as breakpoint;
+@use "sass:map"                          as map;
+
+
+
+$cssvar: --cont-;
+$padding-xs: (
+    mobile  : 20px,
+    tablet  : 40px,
+    desktop : 117px
+) !default;
+
+$padding-ys: (
+    mobile  : 40px,
+    tablet  : 40px,
+    desktop : 95px
+) !default;
+
+
+
+:root {
+    @each $bp-name, $bp-width in breakpoint.$breakpoints {
+        @include breakpoint.media-up($bp-name) {
+            $padding-x: map.get($padding-xs, $bp-name);
+            @if ($padding-x != null) { #{$cssvar}padding-x: $padding-x; }
+
+
+            $padding-y: map.get($padding-ys, $bp-name);
+            @if ($padding-y != null) { #{$cssvar}padding-y: $padding-y; }
+        }
+    }
+}

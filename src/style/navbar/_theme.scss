@@ -1,0 +1,86 @@
+// A default theme, no styling, no animation.
+
+
+
+@forward "theme-dependencies";
+
+
+
+$var-root           : ":root"               !default;
+$var-prefix         : "navbar-theme"        !default;
+$cssvar: "";
+@if (($var-prefix == null) or ($var-prefix == "")) {
+    $cssvar: "--";
+} @else {
+    $cssvar: "--#{$var-prefix}-";
+}
+
+
+
+/// a default theme definition.
+@mixin default { }
+
+
+
+/// a sticky theme definition.
+@mixin sticky { }
+
+
+
+/// a theme definition on phone mode.
+@mixin phone { }
+
+/// an theme definition on phone when expanded.
+@mixin phone-expand { }
+
+/// an theme definition on phone when collapsed.
+@mixin phone-collapse { }
+
+
+
+/// a theme definition on desktop mode.
+@mixin desktop { }
+
+
+
+/// an theme definition for the navbar's logo.
+@mixin logo { }
+
+/// an theme definition for the navbar's logo when expanded.
+@mixin logo-expand { }
+
+/// an theme definition for the navbar's logo when collapsed.
+@mixin logo-collapse { }
+
+
+
+/// an theme definition for the navbar's toggler.
+@mixin toggler { }
+
+/// an theme definition for the navbar's toggler when expanded.
+@mixin toggler-expand { }
+
+/// an theme definition for the navbar's toggler when collapsed.
+@mixin toggler-collapse { }
+
+
+
+/// an theme definition for the navbar's menu.
+@mixin menu { }
+
+/// an theme definition for the navbar's menu when expanded.
+@mixin menu-expand { }
+
+/// an theme definition for the navbar's menu when collapsed.
+@mixin menu-collapse { }
+
+
+
+/// an theme definition for the navbar's link.
+@mixin link { }
+
+/// an theme definition for the navbar's link when expanded.
+@mixin link-expand { }
+
+/// an theme definition for the navbar's link when collapsed.
+@mixin link-collapse { }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/test/style/index.css">
+</head>
+<body>
+    <!--
+        note to navbar:
+        to open the menu: add class "expand"
+        to close the menu: remove class "expand" and then add class "collapse"
+
+        add event onChange={....} at the <input type="checkbox" into your framework
+        for handleing expand/collapse functionality
+    -->
+    <nav class="navbar" id="nav1">
+        <a class="logo" href="/">
+            <img src="./res/blue-logo.svg">
+        </a>
+        <label class="toggler">
+            <input type="checkbox" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+            <svg viewbox="0 0 24 24"><polyline points="2,3 22,3" /><polyline points="2,12 22,12" /><polyline points="2,21 22,21" /></svg>
+        </label>
+        <div class="menu">
+            <a href="/" class="active">Home</span></a>
+            <a href="/how-started">How to start</a>
+            <a href="/pricing">Calculate savings</a>
+            <a href="/faq">FAQ</a>
+            <a href="/contact">Contact</a>
+            <button type="button" href="/get-started" class="btn light outline">Get started</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <p class="title display-6">Book Google Shopping ads through us and save 20%. For shops of any size.</p>
+            <img class="ilus" src="./res/ilus-shopping.svg"/>
+            <p class="cert">
+                Certified by:<br>
+                <img src="./res/cert-google.svg"/>
+            </p>
+            <a class="btn primary lg action">Start now</a>
+        </section>
+    </main>
+</body>
+</html>
