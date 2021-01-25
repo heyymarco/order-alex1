@@ -5,7 +5,7 @@
 @forward "theme-menu-slide"         hide
                                     toggler-expand, toggler-collapse, // will be overriden by toggler-transform
                                     logo, toggler, link, // will be overriden by hover-bg
-                                    default, logo, menu, link // will be overriden on this module
+                                    default, logo, toggler, menu, link // will be overriden on this module
                                     ;
 @use "theme-menu-slide" as menu-slide;
 
@@ -13,7 +13,7 @@
 @forward "theme-toggler-transf"     hide
                                     menu-expand, menu-collapse, // will be overriden by menu-slide
                                     logo, toggler, link, // will be overriden by hover-bg
-                                    default, logo, menu, link // will be overriden on this module
+                                    default, logo, toggler, menu, link // will be overriden on this module
                                     ;
 @use "theme-toggler-transf" as toggler-transform;
 
@@ -21,7 +21,7 @@
 @forward "theme-hover-bg"           hide
                                     toggler-expand, toggler-collapse, // will be overriden by theme-toggler-transform
                                     menu-expand, menu-collapse, // will be overriden by menu-slide
-                                    default, logo, menu, link // will be overriden on this module
+                                    default, logo, toggler, menu, link // will be overriden on this module
                                     ;
 @use "theme-hover-bg" as hover-bg;
 
@@ -94,6 +94,13 @@
         width: 100%;
         height: auto;
     }
+}
+
+@mixin toggler {
+    @include hover-bg.toggler;
+
+    width: 32px;
+    height: 32px;
 }
 
 @mixin menu {

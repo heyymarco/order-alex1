@@ -1,16 +1,17 @@
 @use "~@nodestrap/typography/src/index"     as typo;
 @use "~@nodestrap/breakpoints/src/index"    as breakpoint;
-@use "navbar/index"                         as navbar;
+// @use "navbar/index"                         as navbar;
 @use "container/index"                      as container;
 
 
 
 section.hero {
-    background : var(#{typo.$cssvar}backg);
-    color      : var(#{typo.$cssvar}color);
-    min-height : calc(100vh - var(#{navbar.$cssvar}height));
+    background  : var(#{typo.$cssvar}backg);
+    color       : var(#{typo.$cssvar}color);
+    // min-height  : calc(100vh - var(#{navbar.$cssvar}height));
+    min-height  : 100vh;
 
-    padding    : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
 
 
 
@@ -50,6 +51,9 @@ section.hero {
 
         justify-self: stretch;
         align-self: stretch;
+        
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$disp-cssvar}font-size-6);
     }
     .ilus {
         grid-area: ilus;

@@ -2,7 +2,20 @@
   "name": "alex-1",
   "version": "1.0.0",
   "description": "order html with css",
-  "main": "index.js",
+  "dependencies": {
+    "@nodestrap/border": "^2.0.0",
+    "@nodestrap/breakpoints": "^2.0.0",
+    "@nodestrap/button": "^2.0.6",
+    "@nodestrap/colors": "^2.0.1",
+    "@nodestrap/icon": "^2.0.7",
+    "@nodestrap/spacer": "^2.0.0",
+    "@nodestrap/strip-out": "^2.0.0",
+    "@nodestrap/typography": "^2.0.0",
+    "tilde-sass": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
   "scripts": {
     "compile": "tilde-sass --file src/**/*.scss --outFile test/  && gulp",
     "compile-min": "tilde-sass --file src/**/*.scss --outFile dist/ --outputStyle compressed  && gulp"
@@ -16,17 +29,5 @@
   "bugs": {
     "url": "https://github.com/heyymarco/order-alex1/issues"
   },
-  "homepage": "https://github.com/heyymarco/order-alex1#readme",
-  "dependencies": {
-    "@nodestrap/breakpoints": "^2.0.0",
-    "@nodestrap/button": "^2.0.6",
-    "@nodestrap/colors": "^2.0.1",
-    "@nodestrap/spacer": "^2.0.0",
-    "@nodestrap/strip-out": "^2.0.0",
-    "@nodestrap/typography": "^2.0.0",
-    "tilde-sass": "^1.0.0"
-  },
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  }
+  "homepage": "https://github.com/heyymarco/order-alex1#readme"
 }

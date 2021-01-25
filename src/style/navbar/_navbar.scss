@@ -8,7 +8,7 @@ $cssvar: "";
     $cssvar: "--#{$var-prefix}-";
 }
 
-$grid-area          : navbar-start / navbar-start / body-end / body-end !default;
+$grid-area          : unset !default;
 $breakpoint         : tablet    !default;
 $zindex             : 1020                  !default; //TODO: add z-index component
 
@@ -144,6 +144,7 @@ $menu-desktop-gax  : auto                   !default;
 @mixin navbar {
     // grid item structures:
     grid-area: var(#{$cssvar}grid-area);
+    align-self: start;
 
 
     // sticky-able navbar:
@@ -190,7 +191,7 @@ $menu-desktop-gax  : auto                   !default;
     .logo {
         // grid item structures:
         grid-area: logo;
-        align-self: stretch; // stretch the logo height covering whole navbar height
+        align-self: center; // center the logo vertically
 
 
         // structures:

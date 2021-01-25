@@ -1,0 +1,53 @@
+@use "~@nodestrap/icon/src/index"      as icon;
+@use "~@nodestrap/colors/src/index"    as color;
+@use "~@nodestrap/strip-out/src/index" as strip-out;
+
+
+.carousel-controls,
+.carousel-indicators {
+    > * {
+        #{icon.$cssvar}color     : var(#{color.$cssvar}secondary);
+        cursor                   : pointer;
+    
+        &:hover, &.active {
+            #{icon.$cssvar}color : var(#{color.$cssvar}primary);
+        }
+    }
+}
+
+
+.carousel-controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 24px;
+
+
+    > .prev, .next {
+        @extend #{icon.$alias}--;
+        #{icon.$cssvar}size: 48px;
+    }
+
+    > .prev {
+        @extend #{icon.$alias}-navigate_before;
+    }
+
+    > .next {
+        @extend #{icon.$alias}-navigate_next;
+    }
+}
+
+.carousel-indicators {
+    @include strip-out.list; // strip out list styling
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 12px;
+
+    > * {
+        @extend #{icon.$alias}--;
+        @extend #{icon.$alias}-dash;
+        #{icon.$cssvar}size: 32px;
+    }
+}

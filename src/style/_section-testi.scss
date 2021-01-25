@@ -1,0 +1,195 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+
+
+
+section.testi {
+    background  : var(#{color.$cssvar}light);
+    color       : var(#{color.$cssvar}dark);
+
+    padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+
+
+    display: grid;
+    grid-template-columns: 100fr;
+    grid-template-rows:
+        min-content  // title
+        60px         // spacer
+        auto         // carousel-items
+        20px         // spacer
+        min-content  // carousel-indicators
+        60px         // spacer
+        min-content; // footer
+    grid-template-areas:
+        "title"
+        "........."
+        "carousel-items"
+        "........."
+        "carousel-indicators"
+        "........."
+        "footer";
+    @include breakpoint.media-up(tablet) {
+        grid-template-columns: auto min-content;
+        grid-template-rows:
+            min-content  // title
+            60px         // spacer
+            auto         // carousel-items
+            20px         // spacer
+            min-content  // carousel-indicators
+            60px         // spacer
+            min-content; // footer
+        grid-template-areas:
+                          "title carousel-controls"
+                      "......... ........."
+                 "carousel-items carousel-items"
+                      "......... ........."
+            "carousel-indicators carousel-indicators"
+                      "......... ........."
+                         "footer footer";
+    }
+
+
+    .love {
+        grid-area: title;
+
+        
+        display: inline-block;
+
+        &::before {
+            @extend #{icon.$alias}--;
+            @extend #{icon.$alias}-favorite;
+            #{icon.$cssvar}size: 32px;
+            #{icon.$cssvar}color : var(#{color.$cssvar}primary);
+            background: var(#{color.$cssvar}primary-transp);
+
+            --size: 50px;
+            @include breakpoint.media-up(tablet) {
+                --size: 85px;
+            }
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(#{border.$cssvar}radius-circle);
+        }
+    }
+
+
+    .title {
+        grid-area: title;
+
+        
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$disp-cssvar}font-size-5);
+    }
+
+    .carousel-controls {
+        grid-area: carousel-controls;
+
+
+        justify-self: end; // align right
+        align-self: end; // align bottom
+
+        
+        @include breakpoint.media-down(tablet) {
+            display: none;
+        }
+    }
+
+    .carousel-indicators {
+        grid-area: carousel-indicators;
+    }
+
+    .carousel-items {
+        grid-area: carousel-items;
+
+        
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        overflow: hidden;
+        
+        > .scroller {
+            display: inline-flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            column-gap: 30px;
+            align-items: stretch; // equal height
+
+
+            > article {
+                width: 350px;
+                min-height: 221px;
+                flex-shrink: 0; // do not shrink the width/height;
+    
+                border: var(#{border.$cssvar}style) var(#{border.$cssvar}default) var(#{border.$cssvar}color);
+                border-radius: 10px;
+    
+    
+                --padding-x: 30px;
+                --padding-y: 25px;
+                > header, .body, footer {
+                    padding-left   : var(--padding-x);
+                    padding-right  : var(--padding-x);
+                }
+                > header {
+                    padding-top    : var(--padding-y);
+                    padding-bottom : calc(var(--padding-y) / 2);
+                }
+                > .body {
+                    padding-top    : calc(var(--padding-y) / 2);
+                    padding-bottom : calc(var(--padding-y) / 2);
+                }
+                > footer {
+                    padding-top    : calc(var(--padding-y) / 2);
+                    padding-bottom : var(--padding-y);
+                }
+    
+    
+                > header {
+                    @extend #{typo.$h-alias};
+                    font-size: var(#{typo.$cssvar}font-size-md);
+                }
+    
+                > .body {
+    
+                }
+    
+                > footer {
+                    @extend #{typo.$second-alias};
+                    font-size: var(#{typo.$cssvar}font-size-sm);
+                }
+            }
+        }
+    }
+
+    footer {
+        grid-area: footer;
+
+        
+        .title {
+            @extend #{typo.$p-alias};
+            font-size: var(#{typo.$p-cssvar}font-size);
+            text-align: center;
+        }
+
+        .customer-list {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            overflow: hidden;
+
+            > .scroller {
+                display: inline-flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                column-gap: 55px;
+                @include breakpoint.media-up(tablet) {
+                    column-gap: 75px;
+                }
+            }
+        }
+    }
+}
