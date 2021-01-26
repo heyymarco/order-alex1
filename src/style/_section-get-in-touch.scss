@@ -1,0 +1,156 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+@use "input"                                as input;
+
+
+
+section.get-in-touch {
+    padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+
+
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content) 45px min-content 60px repeat(3, min-content);
+    grid-template-areas:
+        "title"
+        "desc"
+        "...."
+        "cont"
+        "...."
+        "addrs"
+        "phone"
+        "email";
+    @include breakpoint.media-up(tablet) {
+        grid-template-columns: auto 1fr 1fr auto;
+        grid-template-rows: repeat(2, min-content) 70px repeat(5, min-content);
+        grid-template-areas:
+            "...... title  title  ......"
+            "......  desc   desc  ......"
+            "...... ...... ...... ......"
+            "......  cont  ...... ......"
+            "......  cont  addrs  ......"
+            "......  cont  phone  ......"
+            "......  cont  email  ......"
+            "......  cont  ...... ......"
+            ;
+        column-gap: 90px;
+    }
+
+    
+
+    > .title {
+        grid-area: title;
+
+
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-2);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$disp-cssvar}font-size-5);
+        }
+        text-align: center;
+
+        margin-bottom: 26px !important;
+    }
+
+    > .desc {
+        grid-area: desc;
+
+        
+        text-align: center;
+    }
+
+    > .contact {
+        grid-area: cont;
+        
+        
+        display: block;
+        justify-self: stretch;
+        @include breakpoint.media-up(tablet) {
+            display: inline-block;
+            width: 400px;
+            justify-self: end;
+        }
+
+        background    : var(#{color.$cssvar}light);
+        color         : var(#{color.$cssvar}dark);
+        border        : var(#{border.$cssvar}style) var(#{border.$cssvar}hair) var(#{border.$cssvar}color);
+        border-radius : 12px;
+
+
+        > {
+            header {
+                @extend #{typo.$h-alias};
+                font-size: var(#{typo.$h-cssvar}font-size-5);
+                text-align: center;
+                font-weight: 700 !important;
+
+                > * {
+                    margin: 0;
+                }
+            }
+
+            .body {
+                display: flex;
+                flex-direction: column;
+                row-gap: 30px;
+            }
+
+            footer {
+                .btn {
+                    min-width: 130px;
+                }
+            }
+
+
+            header, .body, footer {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+            header {
+                padding-top: 30px;
+                padding-bottom: 15px;
+            }
+            .body {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            footer {
+                padding-top: 15px;
+                padding-bottom: 30px;
+            }
+        }
+    }
+
+    .address, .phone, .email {
+        display: flex;
+        gap: 15px;
+
+        &::before {
+            @extend #{icon.$alias}--;
+            #{icon.$cssvar}size: 32px;
+        }
+    }
+    .address {
+        grid-area: addrs;
+
+        
+        &::before { @extend #{icon.$alias}-place; }
+    }
+    .phone {
+        grid-area: phone;
+
+        
+        &::before { @extend #{icon.$alias}-phone_android; }
+    }
+    .email {
+        grid-area: email;
+
+        
+        &::before { @extend #{icon.$alias}-mail_outline; }
+    }
+}

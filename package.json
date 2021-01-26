@@ -7,6 +7,7 @@
     "@nodestrap/breakpoints": "^2.0.0",
     "@nodestrap/button": "^2.0.6",
     "@nodestrap/colors": "^2.0.1",
+    "@nodestrap/control": "^2.0.25",
     "@nodestrap/icon": "^2.0.7",
     "@nodestrap/spacer": "^2.0.0",
     "@nodestrap/strip-out": "^2.0.0",

@@ -48,6 +48,11 @@ $font-family: "Montserrat";
 // load border:
 @use "~@nodestrap/border/src/index"         as border;
 
+// load control:
+@use "~@nodestrap/control/src/index" as control with (
+    $backg-gradient: linear-gradient(transparent, transparent)
+);
+
 // load button:
 @use "~@nodestrap/button/src/index" as button with (
     $font-weight: var(#{typo.$cssvar}font-weight-bold)
@@ -94,12 +99,14 @@ $font-family: "Montserrat";
 );
 
 // load section-hero:
-@use "./section-hero"        as section-hero;
-@use "./section-testi"       as section-testi;
-@use "./section-get-started" as section-get-started;
-@use "./section-special-us"  as section-special-us;
-@use "./section-changes"     as section-changes;
-@use "./section-savings"     as section-savings;
+@use "./section-hero"         as section-hero;
+@use "./section-testi"        as section-testi;
+@use "./section-get-started"  as section-get-started;
+@use "./section-special-us"   as section-special-us;
+@use "./section-changes"      as section-changes;
+@use "./section-savings"      as section-savings;
+@use "./section-team"         as section-team;
+@use "./section-get-in-touch" as section-get-in-touch;
 
 
 

@@ -1,0 +1,14 @@
+@use "~@nodestrap/control/src/index" as control;
+@use "~@nodestrap/colors/src/index"  as color;
+
+.input {
+    @extend #{control.$alias};
+    @extend #{control.$alias}_primary;
+    background-color : var(#{color.$cssvar}white);
+    color            : var(#{color.$cssvar}dark);
+    cursor           : text;
+
+    &:hover, &:focus {
+        background-color : var(#{color.$cssvar}light);
+    }
+}
