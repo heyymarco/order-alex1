@@ -1,0 +1,63 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/button/src/index"         as button;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+@use "~@nodestrap/strip-out/src/index"      as strip-out;
+
+
+
+section.questions {
+    background    : var(#{color.$cssvar}light);
+    color         : var(#{color.$cssvar}dark);
+
+    padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    // border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}thin) var(#{border.$cssvar}color);
+
+
+    
+    
+    > .title {
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-2);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$disp-cssvar}font-size-5);
+        }
+        text-align: center;
+
+        margin-bottom: 26px !important;
+    }
+
+    > .desc {
+        @extend #{typo.$second-alias};
+        text-align: center;
+    }
+
+
+    .accordion {
+        @extend #{typo.$h-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-3);
+
+
+        .toggle {
+            @include strip-out.control;
+            cursor: pointer;
+
+
+            &::before {
+                @extend #{icon.$alias}--;
+                #{icon.$cssvar}size: 36px;
+                #{icon.$cssvar}color: var(#{color.$cssvar}dark);
+                @extend #{icon.$alias}-expand_more;
+            }
+            &:checked::before {
+                @extend #{icon.$alias}-expand_less;
+            }
+        }
+    }
+    .accordion-collapse {
+        border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}hair) var(#{border.$cssvar}color);
+    }
+}

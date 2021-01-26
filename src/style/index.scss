@@ -50,7 +50,7 @@ $font-family: "Montserrat";
 
 // load control:
 @use "~@nodestrap/control/src/index" as control with (
-    $backg-gradient: linear-gradient(transparent, transparent)
+    $backg-gradient: linear-gradient(transparent, transparent) // disable gradient default
 );
 
 // load button:
@@ -107,6 +107,7 @@ $font-family: "Montserrat";
 @use "./section-savings"      as section-savings;
 @use "./section-team"         as section-team;
 @use "./section-get-in-touch" as section-get-in-touch;
+@use "./section-questions"    as section-questions;
 
 
 
