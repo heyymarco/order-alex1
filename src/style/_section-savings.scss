@@ -1,0 +1,201 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/button/src/index"         as button;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+
+
+
+section.savings {
+    background    : var(#{color.$cssvar}light);
+    // background    : var(#{color.$cssvar}white);
+    // @include breakpoint.media-down(tablet) {
+    // }
+    color         : var(#{color.$cssvar}dark);
+
+    @include breakpoint.media-up(tablet) {
+        padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    }
+    border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}thin) var(#{border.$cssvar}color);
+
+
+    
+    > .title {
+        margin-bottom: 26px;
+
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-2);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$disp-cssvar}font-size-5);
+        }
+        text-align: center;
+    }
+
+    > .desc {
+        text-align: center;
+    }
+
+    @include breakpoint.media-down(tablet) {
+        padding-top: var(#{container.$cssvar}padding-y);
+        
+        > .title, > .desc {
+            margin-left: var(#{container.$cssvar}padding-x);
+            margin-right: var(#{container.$cssvar}padding-x);
+        }
+    }
+
+
+    .graph {
+        margin-top: 50px;
+
+        display: grid;
+        grid-template-columns: 55px 1fr 1fr 1fr 2fr 1fr 1fr 1fr 55px;
+        grid-template-rows: 24px repeat(4, min-content) 40px repeat(4, min-content) 40px;
+        grid-template-areas:
+            "...... ...... ...... ...... ...... ...... ...... ...... ......"
+            "...... go-tt  go-tt  ...... ...... ...... pr-tt  pr-tt  ......"
+            "...... go-cur go-amt ...... arrow  ...... pr-cur pr-amt ......"
+            "...... go-hor go-hor ...... ...... ...... pr-hor pr-hor ......"
+            "...... go-per go-per ...... ...... ...... pr-per pr-per ......"
+            "blocks ...... ...... ...... ...... ...... ...... ...... ......"
+            "...... ...... ...... sa-tt  sa-tt  sa-tt  ...... ...... ......"
+            "...... ...... ...... sa-cur sa-amt ...... ...... ...... ......"
+            "...... ...... ...... sa-hor sa-hor sa-hor ...... ...... ......"
+            "...... ...... sa-per sa-per sa-per sa-per sa-per ...... ......"
+            "...... ...... ...... ...... ...... ...... ...... ...... blocke"
+            ;
+        @include breakpoint.media-up(tablet) {
+            grid-template-columns: repeat(7, 1fr) repeat(3, 1.3fr);
+            grid-template-rows: repeat(4, min-content);
+            grid-template-areas:
+                "go-tt  go-tt  go-tt  ...... pr-tt  pr-tt  pr-tt  sa-tt  sa-tt   sa-tt"
+                "go-cur go-amt ...... arrow  pr-cur pr-amt ...... sa-cur sa-amt ......"
+                "go-hor go-hor go-hor ...... pr-hor pr-hor pr-hor sa-hor sa-hor sa-hor"
+                "go-per go-per go-per ...... pr-per pr-per pr-per sa-per sa-per sa-per";
+        }
+        justify-items: center;
+        align-items: center;
+
+        background-color: var(#{color.$cssvar}white);
+        &::before {
+            grid-area: blocks-start / blocks-start / blocke-end / blocke-end;
+            @include breakpoint.media-up(tablet) {
+                grid-area: sa-tt-start / sa-tt-start / sa-per-end / sa-per-end;
+            }
+
+            display: block;
+            content: "";
+
+            justify-self: stretch;
+            align-self: stretch;
+
+            background-color: var(#{color.$cssvar}yellow);
+        }
+
+        .go {
+            &.title { grid-area: go-tt;  }
+            &.cur   { grid-area: go-cur; }
+            &.amt   { grid-area: go-amt; }
+            &.hor   { grid-area: go-hor; }
+            &.per   { grid-area: go-per; }
+        }
+        .pr {
+            &.title { grid-area: pr-tt;  }
+            &.cur   { grid-area: pr-cur; }
+            &.amt   { grid-area: pr-amt; }
+            &.hor   { grid-area: pr-hor; }
+            &.per   { grid-area: pr-per; }
+        }
+        .sa {
+            &.title { grid-area: sa-tt;  }
+            &.cur   { grid-area: sa-cur; }
+            &.amt   { grid-area: sa-amt; }
+            &.hor   { grid-area: sa-hor; }
+            &.per   { grid-area: sa-per; }
+        }
+        .arrow {
+            grid-area: arrow;
+
+            width: 66px;
+            height: 24px;
+            background-image: url("../res/right-arrow.svg");
+        }
+
+        
+        h2, p, hr {
+            margin: 0;
+            line-height: 1 !important;
+        }
+        .title {
+            margin-top: 0px;
+            margin-bottom: 24px;
+            @include breakpoint.media-up(tablet) {
+                margin-top: 40px;
+                margin-bottom: 36px;
+            }
+            font-size: var(#{typo.$cssvar}font-size-nm);
+            font-weight: 500;
+
+            &.pr {
+                font-weight: 600;
+                color: var(#{color.$cssvar}primary);
+            }
+
+            @include breakpoint.media-down(tablet) {
+                &.sa {
+                    font-size: var(#{typo.$cssvar}font-size-md);
+                }
+            }
+        }
+        .cur, .per {
+            @extend #{typo.$second-alias};
+        }
+        .cur, .amt {
+            font-size: 1.3rem;
+            @include breakpoint.media-up(tablet) {
+                font-size: 2.375rem;
+            }
+            font-weight: 500;
+
+            @include breakpoint.media-down(tablet) {
+                &.sa {
+                    font-size: var(#{typo.$cssvar}font-size-xl);
+                }
+            }
+        }
+        .cur {
+            @include breakpoint.media-up(tablet) {
+                justify-self: end;
+            }
+        }
+        .hor {
+            margin-top: 0px;
+            margin-bottom: 24px;
+            @include breakpoint.media-up(tablet) {
+                margin-top: 16px;
+                margin-bottom: 40px;
+                margin-left: 25px;
+                margin-right: 25px;
+            }
+            #{typo.$hr-cssvar}color: var(#{color.$cssvar}secondary);
+            justify-self: stretch;
+        }
+        .sa {
+            color: var(#{color.$cssvar}white);
+            #{typo.$hr-cssvar}color: var(#{color.$cssvar}white);
+        }
+        .per {
+            margin-bottom: 32px;
+            @include breakpoint.media-down(tablet) {
+                &.sa {
+                    margin-bottom: 0px;
+                }
+            }
+            @include breakpoint.media-up(tablet) {
+                margin-bottom: 40px;
+            }
+        }
+    }
+}

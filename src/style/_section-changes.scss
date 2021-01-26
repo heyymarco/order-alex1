@@ -1,6 +1,7 @@
 @use "container/index"                      as container;
 @use "~@nodestrap/colors/src/index"         as color;
 @use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/button/src/index"         as button;
 @use "~@nodestrap/typography/src/index"     as typo;
 @use "~@nodestrap/border/src/index"         as border;
 @use "~@nodestrap/breakpoints/src/index"    as breakpoint;
@@ -11,21 +12,83 @@ section.changes {
     background    : var(#{color.$cssvar}light);
     color         : var(#{color.$cssvar}dark);
 
-    padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    // padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
     border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}thin) var(#{border.$cssvar}color);
 
 
     
+    display: grid;
+    grid-template-columns: var(#{container.$cssvar}padding-x) 100fr var(#{container.$cssvar}padding-x);
+    grid-template-rows:
+        var(#{container.$cssvar}padding-y)
+        min-content
+        var(--title-spacer)
+        min-content
+        var(--desc-spacer)
+        min-content
+        var(--table-spacer)
+        min-content
+        var(#{container.$cssvar}padding-y);
+    --title-spacer: 38px;
+    --desc-spacer: 30px;
+    --table-spacer: 40px;
+    @include breakpoint.media-up(tablet) {
+        --title-spacer: 28px;
+        --desc-spacer: 55px;
+        --table-spacer: 60px;
+    }
+    grid-template-areas:
+        "...... ...... ......"
+        "...... title  ......"
+        "...... ...... ......"
+        "......  desc  ......"
+        "...... ...... ......"
+        "table   table  table"
+        "...... ...... ......"
+        "...... button ......"
+        "...... ...... ......";
+    @include breakpoint.media-up(tablet) {
+        grid-template-areas:
+            "...... ...... ......"
+            "...... title  ......"
+            "...... ...... ......"
+            "......  desc  ......"
+            "...... ...... ......"
+            "......  table ......"
+            "...... ...... ......"
+            "...... button ......"
+            "...... ...... ......";
+    }
+
+
+
+    .tgl-long { display: none; }
+    @include breakpoint.media-up(tablet) {
+        .tgl-long { display: unset; }
+        .tgl-short { display: none; }
+    }
+    
     > .title {
         grid-area: title;
-
         
         @extend #{typo.$disp-alias};
-        font-size: var(#{typo.$disp-cssvar}font-size-5);
+        font-size: var(#{typo.$h-cssvar}font-size-2);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$disp-cssvar}font-size-5);
+        }
+        text-align: center;
+    }
+
+    .desc {
+        grid-area: desc;
     }
 
     
     table {
+        grid-area: table;
+        justify-self: stretch;
+
+
         border-collapse: separate;
         border-spacing: 2px 1px;
         @include breakpoint.media-up(tablet) {
@@ -34,8 +97,15 @@ section.changes {
 
 
         th, td {
-            padding: 15px 20px;
             vertical-align: middle;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            @include breakpoint.media-down(tablet) {
+                padding-left: var(#{container.$cssvar}padding-x);
+                padding-right: var(#{container.$cssvar}padding-x);
+            }
 
             &:first-child {
                 text-align: left;
@@ -57,8 +127,10 @@ section.changes {
             background: var(#{color.$cssvar}white);
         }
         td:nth-child(1n+2) {
-            width: 250px;
-            height: 70px;
+            min-height: 70px;
+            @include breakpoint.media-up(tablet) {
+                min-width: 250px;
+            }
         }
 
         td { > {
@@ -79,5 +151,16 @@ section.changes {
                 #{icon.$cssvar}color : var(#{color.$cssvar}secondary);
             }
         }}
+    }
+
+    .btn {
+        grid-area: button;
+        justify-self: stretch;
+        @include breakpoint.media-up(tablet) {
+            justify-self: center;
+            min-width: 330px;
+        }
+
+        @extend #{button.$alias}_lg;
     }
 }
