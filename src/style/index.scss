@@ -63,7 +63,9 @@ $font-family: "Montserrat";
         get_paid     : 1.00,
         stuff        : 1.00,
         transp       : 1.00,
-        not_alone    : 1.00
+        not_alone    : 1.00,
+        mark_yes     : 1.00,
+        mark_no      : 1.00
     ),
 
     $font-path  : "../res/fonts/",
@@ -95,6 +97,7 @@ $font-family: "Montserrat";
 @use "./section-testi"       as section-testi;
 @use "./section-get-started" as section-get-started;
 @use "./section-special-us"  as section-special-us;
+@use "./section-changes"     as section-changes;
 
 
 

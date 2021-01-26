@@ -1,0 +1,83 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+
+
+
+section.changes {
+    background    : var(#{color.$cssvar}light);
+    color         : var(#{color.$cssvar}dark);
+
+    padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}thin) var(#{border.$cssvar}color);
+
+
+    
+    > .title {
+        grid-area: title;
+
+        
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$disp-cssvar}font-size-5);
+    }
+
+    
+    table {
+        border-collapse: separate;
+        border-spacing: 2px 1px;
+        @include breakpoint.media-up(tablet) {
+            border-spacing: 28px 1px;
+        }
+
+
+        th, td {
+            padding: 15px 20px;
+            vertical-align: middle;
+
+            &:first-child {
+                text-align: left;
+            }
+            &:nth-child(1n+2) {
+                text-align: center;
+            }
+        }
+        
+        th {
+            background: transparent;
+
+            &:nth-child(2) {
+                color: var(#{color.$cssvar}primary);
+            }
+        }
+        
+        td {
+            background: var(#{color.$cssvar}white);
+        }
+        td:nth-child(1n+2) {
+            width: 250px;
+            height: 70px;
+        }
+
+        td { > {
+            .yes, .no, .partial {
+                @extend #{icon.$alias}--;
+                #{icon.$cssvar}size: 20px;
+            }
+            .yes {
+                @extend #{icon.$alias}-mark_yes;
+                #{icon.$cssvar}color : var(#{color.$cssvar}primary);
+            }
+            .no {
+                @extend #{icon.$alias}-mark_no;
+                #{icon.$cssvar}color : var(#{color.$cssvar}danger);
+            }
+            .partial {
+                @extend #{icon.$alias}-mark_yes;
+                #{icon.$cssvar}color : var(#{color.$cssvar}secondary);
+            }
+        }}
+    }
+}
