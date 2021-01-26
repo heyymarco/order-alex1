@@ -8,10 +8,11 @@
 
 
 section.testi {
-    background  : var(#{color.$cssvar}light);
-    color       : var(#{color.$cssvar}dark);
+    background    : var(#{color.$cssvar}light);
+    color         : var(#{color.$cssvar}dark);
 
-    padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    border-bottom : var(#{border.$cssvar}style) var(#{border.$cssvar}thin) var(#{border.$cssvar}color);
 
 
     display: grid;
@@ -54,30 +55,31 @@ section.testi {
 
 
     .love {
-        grid-area: title;
-
-        
-        display: inline-block;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
         &::before {
             @extend #{icon.$alias}--;
             @extend #{icon.$alias}-favorite;
             #{icon.$cssvar}size: 32px;
             #{icon.$cssvar}color : var(#{color.$cssvar}primary);
-            background: var(#{color.$cssvar}primary-transp);
-
-            --size: 50px;
-            @include breakpoint.media-up(tablet) {
-                --size: 85px;
-            }
-            width: var(--size);
-            height: var(--size);
-            border-radius: var(#{border.$cssvar}radius-circle);
         }
+
+
+        background: var(#{color.$cssvar}primary-transp);
+
+        --size: 50px;
+        @include breakpoint.media-up(tablet) {
+            --size: 85px;
+        }
+        width: var(--size);
+        height: var(--size);
+        border-radius: var(#{border.$cssvar}radius-circle);
     }
 
 
-    .title {
+    > .title {
         grid-area: title;
 
         
@@ -170,9 +172,9 @@ section.testi {
 
         
         .title {
-            @extend #{typo.$p-alias};
-            font-size: var(#{typo.$p-cssvar}font-size);
+            @extend #{typo.$second-alias};
             text-align: center;
+            margin-bottom: var(#{typo.$second-cssvar}font-size) !important;
         }
 
         .customer-list {

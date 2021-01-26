@@ -18,7 +18,8 @@
   },
   "scripts": {
     "compile": "tilde-sass --file src/**/*.scss --outFile test/  && gulp",
-    "compile-min": "tilde-sass --file src/**/*.scss --outFile dist/ --outputStyle compressed  && gulp"
+    "compile-min": "tilde-sass --file src/**/*.scss --outFile dist/ --outputStyle compressed  && gulp",
+    "gulp": "gulp"
   },
   "repository": {
     "type": "git",

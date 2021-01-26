@@ -56,8 +56,14 @@ $font-family: "Montserrat";
 @use "~@nodestrap/icon/src/index" as icon with (
     $img-path   : "../res/icons/",
     $img-items  : (
-    /* filename    | ratio */
-        dash        : 1.00
+    /* filename     | ratio */
+        dash         : 1.00,
+        find_leads   : 1.00,
+        book_appoint : 1.00,
+        get_paid     : 1.00,
+        stuff        : 1.00,
+        transp       : 1.00,
+        not_alone    : 1.00
     ),
 
     $font-path  : "../res/fonts/",
@@ -85,8 +91,10 @@ $font-family: "Montserrat";
 );
 
 // load section-hero:
-@use "./section-hero" as section-hero;
-@use "./section-testi" as section-testi;
+@use "./section-hero"        as section-hero;
+@use "./section-testi"       as section-testi;
+@use "./section-get-started" as section-get-started;
+@use "./section-special-us"  as section-special-us;
 
 
 

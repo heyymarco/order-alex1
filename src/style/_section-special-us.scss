@@ -1,0 +1,107 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+
+
+
+section.special-us {
+    padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+
+
+
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content 10px repeat(6, min-content);
+    grid-template-areas:
+        "title    title"
+        "...... ......."
+        "ilus-1 title-1"
+        "......  text-1"
+        "ilus-2 title-2"
+        "......  text-2"
+        "ilus-3 title-3"
+        "......  text-3";
+    @include breakpoint.media-up(tablet) {
+        grid-template-columns: min-content auto 60px min-content auto;
+        grid-template-rows: repeat(2, min-content) 10px repeat(2, min-content);
+        grid-template-areas:
+            "title  title   ...... ilus-2 title-2"
+            "title  title   ...... ilus-2  text-2"
+            "...... ....... ...... ...... ......."
+            "ilus-1 title-1 ...... ilus-3 title-3"
+            "ilus-1  text-1 ...... ilus-3  text-3";
+    }
+    gap: 20px;
+
+    
+
+    .title:first-child {
+        grid-area: title;
+
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-2);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$disp-cssvar}font-size-5);
+        }
+        margin-top: 0;
+    }
+
+    .stuff {
+        &.ilus {
+            grid-area: ilus-1;
+
+            @extend #{icon.$alias}-stuff;
+        }
+        &.title {
+            grid-area: title-1;
+        }
+        &.text {
+            grid-area: text-1;
+        }
+    }
+    .transp {
+        &.ilus {
+            grid-area: ilus-2;
+
+            @extend #{icon.$alias}-transp;
+        }
+        &.title {
+            grid-area: title-2;
+        }
+        &.text {
+            grid-area: text-2;
+        }
+    }
+    .not-alone {
+        &.ilus {
+            grid-area: ilus-3;
+
+            @extend #{icon.$alias}-not_alone;
+        }
+        &.title {
+            grid-area: title-3;
+        }
+        &.text {
+            grid-area: text-3;
+        }
+    }
+
+    .ilus {
+        @extend #{icon.$alias}--;
+        #{icon.$cssvar}size: 42px;
+        @include breakpoint.media-up(tablet) {
+            #{icon.$cssvar}size: 50px;
+        }
+    }
+    .title {
+        @extend #{typo.$h-alias};
+        font-size: var(#{typo.$h-cssvar}font-size-4);
+
+        @include breakpoint.media-down(tablet) {
+            align-self: center;
+        }
+    }
+}

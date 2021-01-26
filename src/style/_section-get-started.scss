@@ -1,0 +1,160 @@
+@use "container/index"                      as container;
+@use "~@nodestrap/colors/src/index"         as color;
+@use "~@nodestrap/icon/src/index"           as icon;
+@use "~@nodestrap/typography/src/index"     as typo;
+@use "~@nodestrap/border/src/index"         as border;
+@use "~@nodestrap/breakpoints/src/index"    as breakpoint;
+
+
+
+section.get-started {
+    background    : var(#{color.$cssvar}light);
+    color         : var(#{color.$cssvar}dark);
+
+    padding       : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+
+
+    > .title {
+        @extend #{typo.$disp-alias};
+        font-size: var(#{typo.$disp-cssvar}font-size-5);
+        text-align: center;
+        margin-bottom: 48px !important;
+    }
+
+    .steps {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, min-content) 24px repeat(3, min-content) 24px repeat(3, min-content);
+        grid-template-areas:
+            "ilus1"
+            "titl1"
+            "text1"
+            "....."
+            "ilus2"
+            "titl2"
+            "text2"
+            "....."
+            "ilus3"
+            "titl3"
+            "text3";
+        @include breakpoint.media-down(tablet) {
+            row-gap: 24px;
+        }
+        @include breakpoint.media-up(tablet) {
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(6, 1fr) auto;
+            grid-template-areas:
+                "ilus1 ..... ..... ..... ..... ..... ..... ....."
+                "ilus1 arro1 arro1 ilus2 arro2 arro2 ..... ....."
+                "..... arro1 arro1 ilus2 arro2 arro2 ilus3 ....."
+                "titl1 titl1 ..... ..... ..... ..... ilus3 ....."
+                "text1 text1 ..... titl2 titl2 ..... ..... ....."
+                "text1 text1 ..... text2 text2 ..... titl3 titl3"
+                "text1 text1 ..... text2 text2 ..... text3 text3";
+            column-gap: 12px;
+        }
+
+        .step-1 {
+            &.ilus {
+                grid-area: ilus1;
+                &::before { @extend #{icon.$alias}-find_leads; }
+            }
+            &.title {
+                grid-area: titl1;
+            }
+            &.text {
+                grid-area: text1;
+            }
+        }
+        .step-2 {
+            &.ilus {
+                grid-area: ilus2;
+                &::before { @extend #{icon.$alias}-book_appoint; }
+            }
+            &.title {
+                grid-area: titl2;
+            }
+            &.text {
+                grid-area: text2;
+            }
+        }
+        .step-3 {
+            &.ilus {
+                grid-area: ilus3;
+                &::before { @extend #{icon.$alias}-get_paid; }
+            }
+            &.title {
+                grid-area: titl3;
+            }
+            &.text {
+                grid-area: text3;
+            }
+        }
+
+        .arrow-1 {
+            grid-area: arro1;
+
+            background-image: url("../res/arrow-1.svg");
+            transform: rotate(-5deg);
+        }
+        .arrow-2 {
+            grid-area: arro2;
+
+            background-image: url("../res/arrow-1.svg");
+            transform: rotate(30deg) scaleY(-1);
+        }
+        .arrow-1, .arrow-2 {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+
+            @include breakpoint.media-down(tablet) {
+                display: none;
+            }
+        }
+
+        .ilus {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+    
+            &::before {
+                @extend #{icon.$alias}--;
+                #{icon.$cssvar}size: 50px;
+                #{icon.$cssvar}color : var(#{color.$cssvar}white);
+            }
+    
+    
+            background: var(#{color.$cssvar}yellow);
+    
+            --size: 97px;
+            width: var(--size);
+            height: var(--size);
+            border-radius: var(#{border.$cssvar}radius-lg);
+
+            @include breakpoint.media-down(tablet) {
+                justify-self: center;
+            }
+        }
+        .title {
+            @extend #{typo.$h-alias};
+            font-size: var(#{typo.$h-cssvar}font-size-4);
+            font-weight: 700;
+            text-align: center;
+            @include breakpoint.media-up(tablet) {
+                text-align: left;
+            }
+
+            align-self: end;
+        }
+        .text {
+            @include breakpoint.media-down(tablet) {
+                text-align: center;
+            }
+        }
+    }
+
+
+
+    
+}
