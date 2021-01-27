@@ -1,7 +1,6 @@
 @use "container/index"                      as container;
 @use "~@nodestrap/colors/src/index"         as color;
 @use "~@nodestrap/icon/src/index"           as icon;
-@use "~@nodestrap/button/src/index"         as button;
 @use "~@nodestrap/typography/src/index"     as typo;
 @use "~@nodestrap/border/src/index"         as border;
 @use "~@nodestrap/breakpoints/src/index"    as breakpoint;
@@ -38,7 +37,10 @@ section.questions {
 
     .accordion {
         @extend #{typo.$h-alias};
-        font-size: var(#{typo.$h-cssvar}font-size-3);
+        font-size: var(#{typo.$h-cssvar}font-size-5);
+        @include breakpoint.media-up(tablet) {
+            font-size: var(#{typo.$h-cssvar}font-size-3);
+        }
 
 
         .toggle {

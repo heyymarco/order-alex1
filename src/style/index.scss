@@ -7,7 +7,7 @@
 // define typography (texting) settings:
 $font-family: "Montserrat";
 @use "~@nodestrap/typography/src/index" as typo with (
-    $color: var(#{color.$cssvar}light),
+    $color: var(#{color.$cssvar}white),
     $backg: #4651B8,
 
     $font-family-sans-serif: $font-family,
@@ -18,7 +18,9 @@ $font-family: "Montserrat";
     $p-color        : inherit,
     $h-color        : inherit,
     $disp-color     : inherit,
-    $second-color   : inherit
+    $second-color   : inherit,
+    $mark-color     : inherit,
+    $mark-font-size : inherit
 );
 
 // define responsive breakpoints:
@@ -90,6 +92,9 @@ $font-family: "Montserrat";
     $grid-area : navbar-start / navbar-start / body-end / body-end
 );
 
+// load search box:
+@use "search" as search;
+
 // load body:
 @use "./body" as body;
 
@@ -108,6 +113,7 @@ $font-family: "Montserrat";
 @use "./section-team"         as section-team;
 @use "./section-get-in-touch" as section-get-in-touch;
 @use "./section-questions"    as section-questions;
+@use "./section-shopping"     as section-shopping;
 
 
 

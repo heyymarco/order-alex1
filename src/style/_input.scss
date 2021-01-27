@@ -1,9 +1,22 @@
-@use "~@nodestrap/control/src/index" as control;
+@use "~@nodestrap/sass-class-template/src/index" as *;
+@use "~@nodestrap/control/src/index" as base;
 @use "~@nodestrap/colors/src/index"  as color;
 
-.input {
-    @extend #{control.$alias};
-    @extend #{control.$alias}_primary;
+
+
+$alias              : "%input"                              !default;
+$class              : ".input"                              !default;
+$var-root           : ":root"                               !default;
+$var-prefix         : "inp"                                 !default;
+$var-prefix-base    : ""                                    !default;
+$cssvar: make-cssvar($var-prefix, $var-prefix-base);
+
+
+
+/* begin: general style */
+@mixin _style($include, $cssvar: $cssvar) {
+    @extend #{base.$alias};
+    @extend #{base.$alias}_primary;
     background-color : var(#{color.$cssvar}white);
     color            : var(#{color.$cssvar}dark);
     cursor           : text;
@@ -11,4 +24,21 @@
     &:hover, &:focus {
         background-color : var(#{color.$cssvar}light);
     }
+
+    /* begin: variant-size: font-size, padding, border-radius */
+    @each $size in (sm, lg) { @include variant-of($alias, $size) {
+        @extend #{base.$alias}_#{$size} !optional;
+    }}
+    /* end: variant-size: font-size, padding, border-radius */
 }
+@mixin style($cssvar: $cssvar) {
+    @include _style(true, $cssvar);
+}
+@include alias($alias) {
+    @include _style(false);
+}
+/* end: general style */
+
+
+
+@include class($alias, $class);

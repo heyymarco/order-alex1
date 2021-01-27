@@ -1,30 +1,31 @@
 @use "~@nodestrap/typography/src/index"     as typo;
 @use "~@nodestrap/breakpoints/src/index"    as breakpoint;
 @use "~@nodestrap/colors/src/index"         as color;
-// @use "navbar/index"                         as navbar;
 @use "container/index"                      as container;
+@use "~@nodestrap/icon/src/index"           as icon;
 
 
 
 
-section.hero {
-    // background  : var(#{typo.$cssvar}backg);
-    // color       : var(#{typo.$cssvar}color);
-    // min-height  : calc(100vh - var(#{navbar.$cssvar}height));
-    min-height  : 100vh;
+section.shopping {
+    background  : var(#{color.$cssvar}light);
+    color       : var(#{color.$cssvar}dark);
 
     padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
+    padding-top : 0px;
 
 
 
     display: grid;
     grid-template-columns: 100fr;
     grid-template-rows:
+        min-content  // banner
         min-content  // title
         auto         // ilus
         min-content  // extra
         min-content;  // action
     grid-template-areas:
+        "banner"
         "title"
         "ilus"
         "extra"
@@ -33,10 +34,12 @@ section.hero {
     @include breakpoint.media-up(tablet) {
         grid-template-columns: 50fr 50fr;
         grid-template-rows:
+            min-content  // banner
             auto         // title
             min-content  // action
             min-content;  // extra
         grid-template-areas:
+            "banner banner"
             "title   ilus"
             "action  ilus"
             "extra   ....";
@@ -48,6 +51,38 @@ section.hero {
     }
 
 
+    .banner {
+        grid-area: banner;
+
+        
+        background  : var(#{typo.$cssvar}backg);
+        color       : var(#{color.$cssvar}white);
+
+        text-align  :center;
+
+        margin: 0px;
+        clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+        padding-bottom: 30px;
+
+
+        .link {
+            text-decoration: underline;
+            font-weight: bold;
+            color: currentColor !important;
+
+
+            display: inline-flex;
+            flex-direction: row;
+            gap: 10px;
+
+            &::before {
+                @extend #{icon.$alias}--;
+                @extend #{icon.$alias}-arrow_downward;
+                #{icon.$cssvar}size: 25px;
+                #{icon.$cssvar}color: var(#{color.$cssvar}white);
+            }
+        }
+    }
     .title {
         grid-area: title;
 
@@ -65,7 +100,7 @@ section.hero {
     }
     .cert {
         grid-area: extra;
-        
+
         justify-self: start;
         align-self: end;
 
@@ -78,6 +113,7 @@ section.hero {
         grid-area: action;
 
         justify-self: stretch;
+
         @include breakpoint.media-up(tablet) {
             justify-self: start;
         }
@@ -88,9 +124,11 @@ section.hero {
     }
     .search {
         grid-area: extra;
+
+        justify-self: stretch;
     }
     mark {
-        background-color: var(#{color.$cssvar}primary);
+        background-color: var(#{color.$cssvar}yellow);
         padding-top: 0;
         padding-bottom: 0;
     }

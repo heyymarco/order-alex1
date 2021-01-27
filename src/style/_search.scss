@@ -1,0 +1,69 @@
+@use "~@nodestrap/sass-class-template/src/index" as *;
+@use "~@nodestrap/control/src/index"             as control;
+@use "~@nodestrap/button/src/index"              as button;
+@use "input"                                     as input;
+
+
+$alias              : "%search"                             !default;
+$class              : ".search"                             !default;
+$var-root           : ":root"                               !default;
+$var-prefix         : "src"                                 !default;
+$var-prefix-base    : ""                                    !default;
+$cssvar: make-cssvar($var-prefix, $var-prefix-base);
+
+
+
+/* begin: general style */
+@mixin _style($include, $cssvar: $cssvar) {
+    grid-area: search;
+
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    align-items: stretch;
+
+    
+    /* begin: variant-size: font-size, padding, border-radius */
+    @each $size in (sm, lg) { @include variant-of($alias, $size) {
+        #{input.$class} {
+            @extend #{input.$alias}_#{$size};
+        }
+        #{button.$class} {
+            @extend #{button.$alias}_#{$size};
+        }
+    }}
+    /* end: variant-size: font-size, padding, border-radius */
+
+
+    :first-child {
+        border-right: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    :not(:first-child):not(:last-child) {
+        border-left-style: dashed;
+        border-right: none;
+        border-radius: 0;
+    }
+    :last-child {
+        border-left: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .input[type="search"] {
+        flex-grow: 1;
+    }
+}
+@mixin style($cssvar: $cssvar) {
+    @include _style(true, $cssvar);
+}
+@include alias($alias) {
+    @include _style(false);
+}
+/* end: general style */
+
+
+
+@include class($alias, $class);
