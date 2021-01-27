@@ -7,11 +7,11 @@
 
 
 
-section.hero {
+section.hero-product-search {
     // background  : var(#{typo.$cssvar}backg);
     // color       : var(#{typo.$cssvar}color);
     // min-height  : calc(100vh - var(#{navbar.$cssvar}height));
-    min-height  : 100vh;
+    // min-height  : 100vh;
 
     padding     : var(#{container.$cssvar}padding-y) var(#{container.$cssvar}padding-x);
 
@@ -22,24 +22,20 @@ section.hero {
     grid-template-rows:
         min-content  // title
         1fr          // ilus
-        min-content  // extra
         min-content; // action
     grid-template-areas:
         "title"
         "ilus"
-        "extra"
         "action";
     row-gap: var(#{container.$cssvar}padding-y);
     @include breakpoint.media-up(tablet) {
         grid-template-columns: 50fr 50fr;
         grid-template-rows:
-            1fr          // title
-            min-content  // action
-            min-content; // extra
+            1fr           // title
+            min-content;  // action
         grid-template-areas:
             "title   ilus"
-            "action  ilus"
-            "extra   extra";
+            "action  ilus";
         column-gap: 70px;
     }
     @include breakpoint.media-up(desktop) {
@@ -63,31 +59,8 @@ section.hero {
         justify-self: stretch;
         align-self: stretch;
     }
-    .cert {
-        grid-area: extra;
-        
-        justify-self: start;
-        align-self: end;
-
-        width: 256px;
-        @include breakpoint.media-up(tablet) {
-            width: 262px;
-        }
-    }
-    .action {
-        grid-area: action;
-
-        justify-self: stretch;
-        @include breakpoint.media-up(tablet) {
-            justify-self: start;
-        }
-        align-self: center;
-
-        min-width: 330px;
-        min-height: 60px;
-    }
     .search {
-        grid-area: extra;
+        grid-area: action;
 
         justify-self: stretch;
     }

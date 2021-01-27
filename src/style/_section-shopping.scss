@@ -21,7 +21,7 @@ section.shopping {
     grid-template-rows:
         min-content  // banner
         min-content  // title
-        auto         // ilus
+        1fr         // ilus
         min-content  // extra
         min-content;  // action
     grid-template-areas:
@@ -35,14 +35,14 @@ section.shopping {
         grid-template-columns: 50fr 50fr;
         grid-template-rows:
             min-content  // banner
-            auto         // title
+            1fr         // title
             min-content  // action
             min-content;  // extra
         grid-template-areas:
             "banner banner"
             "title   ilus"
             "action  ilus"
-            "extra   ....";
+            "extra   extra";
         column-gap: 70px;
     }
     @include breakpoint.media-up(desktop) {
@@ -62,7 +62,13 @@ section.shopping {
 
         margin: 0px;
         clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-        padding-bottom: 30px;
+        padding-bottom: 120px;
+        @include breakpoint.media-up(tablet) {
+            padding-bottom: 40px;
+        }
+        @include breakpoint.media-up(desktop) {
+            padding-bottom: 30px;
+        }
 
 
         .link {

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/test/style/index.css">
+</head>
+<body>
+    <!--
+        note to navbar:
+        to open the menu: add class "expand"
+        to close the menu: remove class "expand" and then add class "collapse"
+
+        add event onChange={....} at the <input type="checkbox" into your framework
+        for handleing expand/collapse functionality
+    -->
+    <nav class="navbar" id="nav1">
+        <a class="logo" href="/">
+            <img src="./res/blue-logo.svg">
+        </a>
+        <label class="toggler">
+            <input type="checkbox" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+            <svg viewbox="0 0 24 24"><polyline points="2,3 22,3" /><polyline points="2,12 22,12" /><polyline points="2,21 22,21" /></svg>
+        </label>
+        <div class="menu">
+            <a href="/" class="active">Home</span></a>
+            <a href="/how-started">How to start</a>
+            <a href="/pricing">Calculate savings</a>
+            <a href="/faq">FAQ</a>
+            <a href="/contact">Contact</a>
+            <button type="button" href="/get-started" class="btn light outline">Get started</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-product-search">
+            <h1 class="title">Search for products and get the best prices in the market.</h1>
+            <img class="ilus" src="./res/ilus-calculating.svg"/>
+            <div class="search">
+                <input class="input" type="search" placeholder='Try "Iphone 12"'>
+                <select class="input">
+                    <option selected>Relevance</option>
+                    <option>Other</option>
+                </select>
+                <button class="btn primary">Search product</button>
+            </div>
+        </section>
+
+        <section class="product-search-result">
+            <div class="list">
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+    
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+    
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+    
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+    
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+    
+                <article>
+                    <figure>
+                        <img alt="vodka" src="res/products/vodka.jpg">
+                    </figure>
+                    <header>
+                        <h2>Vodka Koskenkorva 1L</h2>
+                    </header>
+                    <p class="price">
+                        €49,50
+                    </p>
+                    <footer>
+                        <p class="label">Shop now at</p>
+                        <a class="btn link" href="#">Conalco</a>
+                    </footer>
+                </article>
+            </div>
+
+            <button class="load-more btn primary">Load more products</button>
+        </section>
+    </main>
+</body>
+</html>

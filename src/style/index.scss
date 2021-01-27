@@ -103,17 +103,19 @@ $font-family: "Montserrat";
     $grid-area: navbar-start / navbar-start / body-end / body-end
 );
 
-// load section-hero:
-@use "./section-hero"         as section-hero;
-@use "./section-testi"        as section-testi;
-@use "./section-get-started"  as section-get-started;
-@use "./section-special-us"   as section-special-us;
-@use "./section-changes"      as section-changes;
-@use "./section-savings"      as section-savings;
-@use "./section-team"         as section-team;
-@use "./section-get-in-touch" as section-get-in-touch;
-@use "./section-questions"    as section-questions;
-@use "./section-shopping"     as section-shopping;
+// load sections:
+@use "./section-hero"                   as section-hero;
+@use "./section-hero-product-search"    as section-hero-product-search;
+@use "./section-testi"                  as section-testi;
+@use "./section-get-started"            as section-get-started;
+@use "./section-special-us"             as section-special-us;
+@use "./section-changes"                as section-changes;
+@use "./section-savings"                as section-savings;
+@use "./section-team"                   as section-team;
+@use "./section-get-in-touch"           as section-get-in-touch;
+@use "./section-questions"              as section-questions;
+@use "./section-shopping"               as section-shopping;
+@use "./section-product-search-result"  as section-product-search-result;
 
 
 
